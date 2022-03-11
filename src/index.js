@@ -33,9 +33,7 @@ function main() {
 
   // TODO: clean up tmp dirs inside of packages.
 
-  progressSpinner?.succeed(
-    'TS Rollup files generated successfully!\n'
-  );
+  progressSpinner?.succeed('TS Rollup files generated successfully!\n');
 
   debug('end');
 }

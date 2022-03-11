@@ -1,14 +1,14 @@
-const path = require("path");
-const walkSync = require("walk-sync");
+const path = require('path');
+const walkSync = require('walk-sync');
 
 function getAllAddons(debug) {
-  const rootPath = path.join(__dirname, "../../../../../");
+  const rootPath = path.join(__dirname, '../../../../../');
 
   debug(`Finding packages in: ${rootPath}`);
 
   const packageJsonPaths = walkSync(rootPath, {
     directories: false,
-    globs: ["**/package.json"],
+    globs: ['**/package.json'],
     includeBasePath: true,
     ignore: [],
   });
@@ -21,11 +21,11 @@ function getAllAddons(debug) {
  * @returns {string[]} An array of package paths.
  */
 function discover(debug) {
-  debug("start");
+  debug('start');
 
   const packagePaths = getAllAddons(debug);
 
-  debug("end");
+  debug('end');
 
   return packagePaths;
 }
