@@ -1,0 +1,29 @@
+{
+  "name": "gen-ts-rollup",
+  "version": "0.0.0",
+  "repository": "https://github.com/lbdm44/gen-ts-rollup.git",
+  "author": "lbdm44 <lewis.miller.github@pm.me>",
+  "license": "MIT",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/module.js",
+  "types": "dist/types.d.ts",
+  "scripts": {
+    "build": "parcel build",
+    "build:watch": "parcel watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@parcel/packager-ts": "2.3.2",
+    "@parcel/transformer-typescript-types": "2.3.2",
+    "@types/node": "^17.0.21",
+    "parcel": "^2.3.2",
+    "typescript": "^4.6.2"
+  },
+  "targets": {
+    "main": {
+      "context": "node",
+      "isLibrary": true
+    }
+  }
+}
