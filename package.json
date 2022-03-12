@@ -16,7 +16,10 @@
     "build": "parcel build",
     "build:watch": "parcel watch",
     "lint": "eslint .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "vitest dev --config ./vitest.config.ts",
+    "test:run": "vitest run --config ./vitest.config.ts",
+    "test:coverage": "vitest coverage --config ./vitest.config.ts"
   },
   "dependencies": {
     "@babel/parser": "^7.17.3",
@@ -36,7 +39,8 @@
     "lint-staged": "^12.3.5",
     "parcel": "^2.3.2",
     "prettier": "2.5.1",
-    "typescript": "^4.6.2"
+    "typescript": "^4.6.2",
+    "vitest": "^0.6.0"
   },
   "targets": {
     "main": {
