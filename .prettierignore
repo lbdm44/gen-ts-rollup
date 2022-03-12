@@ -1,3 +1,4 @@
 # Ignore artifacts:
 dist
 .parcel-cache
+__fixtures__/

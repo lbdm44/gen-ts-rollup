@@ -1,0 +1,33 @@
+// Vitest Snapshot v1
+
+exports[`get-file-exports > js files > it should handle complex exports 1`] = `
+[
+  "Foo",
+  "foo",
+  "BAR",
+  "baz",
+]
+`;
+
+exports[`get-file-exports > js files > it should handle named class exports 1`] = `
+[
+  "Foo",
+  "Bar",
+]
+`;
+
+exports[`get-file-exports > js files > it should handle named function exports 1`] = `
+[
+  "foo",
+  "bar",
+]
+`;
+
+exports[`get-file-exports > ts files > it should handle complex exports 1`] = `
+[
+  "Foo",
+  "foo",
+  "BAR",
+  "baz",
+]
+`;

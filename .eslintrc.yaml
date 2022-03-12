@@ -5,3 +5,6 @@ plugins:
 extends:
   - 'eslint:recommended'
   - 'plugin:@typescript-eslint/recommended'
+ignorePatterns:
+  - '**/__fixtures__/**'
+  - 'src/utils/*.js' # TODO: remove this once everything is TS

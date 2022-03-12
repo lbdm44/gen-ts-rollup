@@ -1,7 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { parse } = require('@babel/parser');
-const { default: traverse } = require('@babel/traverse');
 
 const buildTmpPath = require('./build-tmp-path');
 const debug = require('./debug').extend('generateEntryPointFilesV2');
@@ -49,62 +47,6 @@ function getExportsFromFile(filePath) {
   }
 
   if (ast) {
-    traverse(ast, {
-      ExportDefaultDeclaration: (declPath) => {
-        const {
-          node: { declaration },
-        } = declPath;
-
-        if (declaration.type === 'CallExpression') {
-          // TODO: This pattern is rather brittle, essentially `export default foo()` probsbly should do `const f = foo(); export default f;`
-          fileExports.default = declaration.callee.name;
-        } else if (declaration.type === 'Identifier') {
-          fileExports.default = declaration.name;
-        } else if (
-          declaration.type === 'ClassDeclaration' ||
-          declaration.type === 'FunctionDeclaration'
-        ) {
-          fileExports.default = declaration.id.name;
-        } else {
-          debug(
-            `Default Export Node Type Not Handled: ${declPath.node?.declaration?.type} in ${filePath}`
-          );
-        }
-      },
-      ExportNamedDeclaration: (declPath) => {
-        const {
-          node: { declaration, specifiers },
-        } = declPath;
-
-        /**
-         * TODO: handle this scenario
-         *
-         * `export { default } from 'foo/bar';`
-         *
-         * Ends up being `import { default } from '../../foo/bar'`
-         */
-
-        if (specifiers.length) {
-          specifiers.forEach((specifier) => {
-            fileExports.named.push(specifier.exported.name);
-          });
-        } else if (
-          declaration.type === 'ClassDeclaration' ||
-          declaration.type === 'FunctionDeclaration' ||
-          declaration.type === 'TSEnumDeclaration' ||
-          declaration.type === 'TSInterfaceDeclaration' ||
-          declaration.type === 'TSTypeAliasDeclaration'
-        ) {
-          fileExports.named.push(declaration.id.name);
-        } else if (declaration.type === 'VariableDeclaration') {
-          declaration.declarations.forEach((varDecl) => {
-            fileExports.named.push(varDecl.id.name);
-          });
-        } else {
-          debug(`Named export: ${declaration.type} not handled in ${filePath}`);
-        }
-      },
-    });
   }
 
   return fileExports;
