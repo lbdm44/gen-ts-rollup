@@ -18,8 +18,7 @@
     "lint": "eslint .",
     "prepare": "husky install",
     "test": "vitest dev --config ./vitest.config.ts",
-    "test:run": "vitest run --config ./vitest.config.ts",
-    "test:coverage": "vitest coverage --config ./vitest.config.ts"
+    "test:run": "vitest run --config ./vitest.config.ts"
   },
   "dependencies": {
     "@babel/parser": "^7.17.3",
