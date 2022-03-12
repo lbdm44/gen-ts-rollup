@@ -8,16 +8,26 @@
   "main": "dist/index.js",
   "module": "dist/module.js",
   "types": "dist/types.d.ts",
+  "files": [
+    "dist/",
+    "types/"
+  ],
   "scripts": {
     "build": "parcel build",
     "build:watch": "parcel watch",
     "lint": "eslint .",
     "prepare": "husky install"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@babel/parser": "^7.17.3",
+    "@babel/traverse": "^7.17.3",
+    "debug": "^4.3.3",
+    "walk-sync": "^3.0.0"
+  },
   "devDependencies": {
     "@parcel/packager-ts": "2.3.2",
     "@parcel/transformer-typescript-types": "2.3.2",
+    "@types/debug": "^4.1.7",
     "@types/node": "^17.0.21",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
